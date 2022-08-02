@@ -2,7 +2,6 @@ import MarkdownIt from 'markdown-it/lib';
 import annotations from './plugins/annotations';
 import frontmatter from './plugins/frontmatter';
 import type Token from 'markdown-it/lib/token';
-
 export default class Tokenizer {
   private parser: MarkdownIt;
 
@@ -12,6 +11,8 @@ export default class Tokenizer {
     this.parser = new MarkdownIt(config);
     this.parser.use(annotations, 'annotations', {});
     this.parser.use(frontmatter, 'frontmatter', {});
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    this.parser.use(require('markdown-it-sup'));
     this.parser.disable([
       'lheading',
       // Disable indented `code_block` support https://spec.commonmark.org/0.30/#indented-code-block
