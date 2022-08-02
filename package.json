@@ -1,5 +1,5 @@
 {
-  "name": "@markdoc/markdoc",
+  "name": "@urbit/markdoc",
   "author": "Ryan Paul",
   "version": "0.1.4",
   "description": "A text markup language for documentation",
@@ -61,5 +61,5 @@
   "bugs": {
     "url": "https://github.com/markdoc/markdoc/issues"
   },
-  "homepage": "https://markdoc.dev"
+  "homepage": "https://github.com/urbit/markdoc"
 }
