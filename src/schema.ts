@@ -1,5 +1,6 @@
 import type { Schema } from './types';
 import Tag from './ast/tag';
+import Raw from './ast/raw';
 
 export const document: Schema = {
   render: 'article',
@@ -228,6 +229,18 @@ export const hardbreak: Schema = {
 export const softbreak: Schema = {
   transform(_node, _config) {
     return ' ';
+  },
+};
+
+export const html: Schema = {
+  attributes: {
+    content: { type: String, required: true },
+  },
+
+  transform(node) {
+    return node.attributes.content
+      ? new Raw(node.attributes.content, node.inline)
+      : null;
   },
 };
 
