@@ -1,11 +1,13 @@
 import type Func from './ast/function';
 import type Node from './ast/node';
-import type Tag from './ast/tag';
 import type Variable from './ast/variable';
 import type Raw from './ast/raw';
+import type Tag from './tag';
 
 export type { Node, Tag, Variable };
 export declare type Function = Func;
+
+export type MaybePromise<T> = T | Promise<T>;
 
 export interface AstType {
   readonly $$mdtype: 'Function' | 'Node' | 'Variable';
@@ -100,7 +102,7 @@ export type Schema<C extends Config = Config, R = string> = {
   children?: string[];
   attributes?: Record<string, SchemaAttribute>;
   selfClosing?: boolean;
-  transform?(node: Node, config: C): RenderableTreeNodes;
+  transform?(node: Node, config: C): MaybePromise<RenderableTreeNodes>;
   validate?(node: Node, config: C): ValidationError[];
 };
 
@@ -117,7 +119,7 @@ export type SchemaMatches = RegExp | string[] | null;
 
 export interface Transformer {
   findSchema(node: Node, config: Config): Schema | undefined;
-  node(node: Node, config: Config): RenderableTreeNodes;
+  node(node: Node, config: Config): MaybePromise<RenderableTreeNodes>;
   attributes(node: Node, config: Config): Record<string, any>;
   children(node: Node, config: Config): RenderableTreeNode[];
 }

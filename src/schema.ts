@@ -1,5 +1,5 @@
 import type { Schema } from './types';
-import Tag from './ast/tag';
+import Tag from './tag';
 import Raw from './ast/raw';
 
 export const document: Schema = {

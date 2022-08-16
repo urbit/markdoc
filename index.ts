@@ -1,18 +1,19 @@
-import Tokenizer from './src/tokenizer';
+import Ast from './src/ast';
+import __EXPERIMENTAL__format from './src/formatter';
+import functions from './src/functions';
 import parser from './src/parser';
-import Node from './src/ast/node';
-import Tag from './src/ast/tag';
-import Ast from './src/ast/index';
 import * as nodes from './src/schema';
-import tags from './src/tags/index';
+import renderers from './src/renderers';
+import Tag from './src/tag';
+import tags from './src/tags';
 import { truthy } from './src/tags/conditional';
-import functions from './src/functions/index';
-import renderers from './src/renderers/index';
+import Tokenizer from './src/tokenizer';
 import transformer, { globalAttributes } from './src/transformer';
-import validator from './src/validator';
+import transforms from './src/transforms';
 import { parseTags } from './src/utils';
-import transforms from './src/transforms/index';
+import validator from './src/validator';
 
+import type { Node } from './src/types';
 import type Token from 'markdown-it/lib/token';
 import type { Config, RenderableTreeNode, ValidateError } from './src/types';
 
@@ -120,6 +121,7 @@ export {
   transformer,
   validator,
   truthy,
+  __EXPERIMENTAL__format,
 };
 
 export default class Markdoc {
@@ -140,6 +142,7 @@ export default class Markdoc {
   static validate = validate;
   static createElement = createElement;
   static truthy = truthy;
+  static __EXPERIMENTAL__format = __EXPERIMENTAL__format;
 
   config;
   constructor(config: Config) {
