@@ -14,7 +14,7 @@ export default class Tokenizer {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     this.parser.use(require('markdown-it-sup'));
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    this.parser.use(require('markdown-it-footnote'));
+    // this.parser.use(require('markdown-it-footnote'));
     this.parser.disable([
       'lheading',
       // Disable indented `code_block` support https://spec.commonmark.org/0.30/#indented-code-block
